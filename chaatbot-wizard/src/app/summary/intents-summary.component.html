@@ -1,0 +1,28 @@
+<div class="section-header">
+  <h2>You selected intents visible below</h2>
+  <p>If you want change your decisions, please back to previous step</p>
+</div>
+
+<ng-container *ngIf="selectedIntents.length > 0; else noIntentsSelected">
+  <mat-list>
+    <mat-list-item *ngFor="let intent of selectedIntents">
+      <span matListItemTitle>{{ intent.name }}</span>
+      <span matListItemLine>{{ intent.description }}</span>
+      <span class="expressions">
+        <span>Expressions:</span>
+        <span *ngFor="let expression of intent.trainingData.expressions">
+          {{ expression.text }}
+        </span>
+      </span>
+    </mat-list-item>
+  </mat-list>
+</ng-container>
+
+<ng-template #noIntentsSelected>
+  <div class="empty-state">
+    <img
+      alt="no-results"
+      src="../../assets/obraz_2025-01-29_223837294-removebg-preview.png"
+    />
+  </div>
+</ng-template>

@@ -1,0 +1,21 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-bg: #FAF9F6;
+  --secondary-text: #0F4C81;
+  --accent-color: #1199b7;
+  --accent-hover-color: #5ebdd8;
+  --shadow-color: #f2e4d7;
+}
+
+
+
+@import url(../src/app/chatbot-wizard.component.scss);
+@import url(../src/app/list/intents-list.component.scss);
+@import url(../src/app/list/table/intents-table.component.scss);
+@import url(../src/app/summary/intents-summary.component.scss);

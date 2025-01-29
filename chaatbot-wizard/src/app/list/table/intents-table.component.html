@@ -1,0 +1,70 @@
+<table mat-table [dataSource]="tabledIntents">
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        (change)="toggleAllSelection($event)"
+        [checked]="isAllSelected()"
+        [indeterminate]="isSomeSelected()"
+        data-cy="select-all-checkbox"
+      ></mat-checkbox>
+      <div class="counter">
+        <span>Selected:</span>
+        <span data-cy="selected-intents-length">
+          {{ selectedIntents.length }} / {{ maxIntents }}
+        </span>
+      </div>
+    </th>
+    <td mat-cell *matCellDef="let intent">
+      <mat-checkbox
+        [checked]="isSelected(intent)"
+        [attr.data-cy]="'intent-checkbox-' + intent.id"
+      ></mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td
+      mat-cell
+      *matCellDef="let intent"
+      [attr.data-cy]="'intent-name-' + intent.id"
+    >
+      {{ intent.name }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td
+      mat-cell
+      *matCellDef="let intent"
+      [attr.data-cy]="'intent-description-' + intent.id"
+    >
+      {{ intent.description }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expressions">
+    <th mat-header-cell *matHeaderCellDef>Expressions example</th>
+    <td
+      mat-cell
+      class="expressions"
+      *matCellDef="let intent"
+      [attr.data-cy]="'intent-expressions-' + intent.id"
+    >
+      <span *ngFor="let expression of intent.trainingData.expressions">
+        {{ expression.text }}
+        <br />
+      </span>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    *matRowDef="let intent; columns: displayedColumns"
+    (click)="toggleSelection(intent)"
+    [ngClass]="{ 'selected-row': isSelected(intent) }"
+    [attr.data-cy]="'intent-row-' + intent.id"
+  ></tr>
+</table>
