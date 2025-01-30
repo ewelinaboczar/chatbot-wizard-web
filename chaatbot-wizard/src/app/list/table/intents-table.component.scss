@@ -1,0 +1,41 @@
+cw-intents-table {
+    .mat-mdc-table {
+        background-color: transparent;
+        
+        .mat-mdc-header-row {
+            color: var(--secondary-text);
+            background-color: white;
+            height: 40px;
+        }
+
+        .mat-mdc-row {
+            color: black;
+            height: 90px;
+
+            &:hover {
+                background-color: var(--shadow-color);
+                cursor: pointer;
+            }  
+        }
+
+        .mat-mdc-cell:last-child {
+            width: 400px;
+        }
+    }
+
+    .expressions {
+        border-bottom: 1px  solid white;
+        background-color: var(--shadow-color);
+    }
+
+    .selected-row {
+        background-color: var(--shadow-color);
+    }
+
+    .counter {
+        font-size: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+}

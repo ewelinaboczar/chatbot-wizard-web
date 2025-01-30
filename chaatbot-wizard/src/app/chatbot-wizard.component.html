@@ -1,0 +1,51 @@
+<section class="header-section">
+  <h1>Zendesk AI Agents - Frontend-Challenge</h1>
+</section>
+<section class="navigation-section">
+  <div
+    class="dot"
+    [ngClass]="{ active: activeStep === 1, before: activeStep > 1 }"
+    (click)="setActiveStep(1)"
+  ></div>
+  <div
+    class="dot"
+    [ngClass]="{ active: activeStep === 2, before: activeStep > 2 }"
+    (click)="setActiveStep(2)"
+  ></div>
+  <div
+    class="dot"
+    [ngClass]="{ active: activeStep === 3, before: activeStep > 3 }"
+    (click)="setActiveStep(3)"
+  ></div>
+</section>
+<section class="content-section" [ngSwitch]="activeStep">
+  <cw-intents-list
+    *ngSwitchCase="2"
+    [selectedIntents]="selectedIntents"
+    (onIntendsSelectedChange)="onIntendsSelectedChange($event)"
+  ></cw-intents-list>
+  <cw-intents-summary
+    *ngSwitchCase="3"
+    [selectedIntents]="selectedIntents"
+  ></cw-intents-summary>
+</section>
+<section class="buttons">
+  <button
+    mat-stroked-button
+    class="back-button"
+    color="primary"
+    *ngIf="activeStep !== 1"
+    (click)="onBack()"
+  >
+    Back
+  </button>
+  <button
+    mat-flat-button
+    class="continue-button"
+    color="primary"
+    *ngIf="activeStep !== 3"
+    (click)="onContinue()"
+  >
+    Continue
+  </button>
+</section>

@@ -1,0 +1,20 @@
+<div class="section-header">
+  <h2>Select pretrained intents below</h2>
+  <p>If you want change your decisions, please back to previous step</p>
+</div>
+
+<cw-intents-table
+  [intents]="pagedIntents"
+  [selectedIntents]="selectedIntents"
+  [maxIntents]="maxIntents"
+  (selectionChanged)="onSelectionChange($event)"
+  (allIntentsSelectedChanged)="onAllIntentsSelectedChanged()"
+></cw-intents-table>
+
+<mat-paginator
+  [length]="intents.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="handlePageEvent($event)"
+>
+</mat-paginator>
